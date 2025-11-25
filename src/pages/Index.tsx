@@ -204,14 +204,21 @@ export default function Index() {
       <footer className="py-12 px-4 border-t">
         <div className="container mx-auto text-center">
           <div className="flex justify-center gap-6 mb-6">
+            <Button 
+              size="icon" 
+              variant="ghost" 
+              className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all hover:scale-110"
+              asChild
+            >
+              <a href="https://t.me/+XvtmRDGb_OFmOThi" target="_blank" rel="noopener noreferrer">
+                <Icon name="Send" size={24} />
+              </a>
+            </Button>
             <Button size="icon" variant="ghost" className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all hover:scale-110">
               <Icon name="Instagram" size={24} />
             </Button>
             <Button size="icon" variant="ghost" className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all hover:scale-110">
               <Icon name="Youtube" size={24} />
-            </Button>
-            <Button size="icon" variant="ghost" className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all hover:scale-110">
-              <Icon name="Twitter" size={24} />
             </Button>
           </div>
           <p className="text-muted-foreground">
