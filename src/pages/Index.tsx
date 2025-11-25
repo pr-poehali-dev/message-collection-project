@@ -116,10 +116,10 @@ export default function Index() {
               <Icon name="Mail" size={32} className="text-white" />
             </div>
             <h2 className="text-5xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-              Предложи свою идею блогеру
+              Напиши своего блогера
             </h2>
-            <p className="text-xl text-muted-foreground">
-              Напиши нам своё предложение или идею для контента!
+            <p className="text-base text-muted-foreground">
+              И мы его добавим на канал ВК видео
             </p>
           </div>
 
