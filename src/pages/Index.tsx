@@ -91,23 +91,15 @@ export default function Index() {
               </span>
             </h1>
             <p className="text-2xl text-white/90 mb-8 animate-fade-in font-medium max-w-2xl mx-auto">
-              Делюсь идеями, вдохновением и творческими находками
+              Площадка для твоих идей и проектов
             </p>
             <div className="flex gap-4 justify-center animate-slide-up">
               <Button
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90 font-semibold text-lg px-8 rounded-2xl shadow-2xl transition-all hover:scale-105"
-                onClick={() => document.getElementById('posts')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Читать блог
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold text-lg px-8 rounded-2xl transition-all hover:scale-105"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Связаться
+                Связаться с нами
               </Button>
             </div>
           </div>
@@ -115,57 +107,7 @@ export default function Index() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </header>
 
-      <section id="posts" className="py-24 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-              Последние записи
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Мои мысли, идеи и творческие эксперименты
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
-              <Card
-                key={post.id}
-                className="group overflow-hidden border-2 hover:border-primary transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 rounded-3xl animate-fade-in cursor-pointer hover:-translate-y-2"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <div className="relative overflow-hidden aspect-[4/3]">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-bold shadow-lg">
-                      {post.category}
-                    </span>
-                  </div>
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-                    <Icon name="Calendar" size={16} />
-                    <span>{post.date}</span>
-                  </div>
-                  <h3 className="text-2xl font-black mb-3 group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  <div className="mt-4 flex items-center text-primary font-semibold group-hover:gap-3 gap-2 transition-all">
-                    Читать далее
-                    <Icon name="ArrowRight" size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section id="contact" className="py-24 px-4 bg-card/50">
         <div className="container mx-auto max-w-4xl">
@@ -174,10 +116,10 @@ export default function Index() {
               <Icon name="Mail" size={32} className="text-white" />
             </div>
             <h2 className="text-5xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-              Свяжитесь со мной
+              Предложи свою идею блогеру
             </h2>
             <p className="text-xl text-muted-foreground">
-              Есть идея для сотрудничества? Напишите мне!
+              Напиши нам своё предложение или идею для контента!
             </p>
           </div>
 
