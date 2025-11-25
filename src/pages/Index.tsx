@@ -79,7 +79,7 @@ export default function Index() {
       <header className="relative overflow-hidden bg-gradient-to-br from-primary via-secondary to-accent animate-gradient-shift bg-[length:200%_200%]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
         <div className="container mx-auto px-4 py-32 relative z-10">
-          <div className="max-w-4xl mx-auto text-center rounded-sm bg-[#171419] px-0.5">
+          <div className="max-w-4xl mx-auto text-center rounded-sm px-0.5 bg-transparent">
             <div className="inline-block mb-6 animate-float">
               <div className="w-20 h-20 rounded-3xl bg-white/20 backdrop-blur-sm flex items-center justify-center transform rotate-12">
                 <Icon name="Sparkles" size={40} className="text-white" />
