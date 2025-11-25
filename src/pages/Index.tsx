@@ -86,10 +86,8 @@ export default function Index() {
               </div>
             </div>
             <h1 className="text-7xl font-black mb-6 text-white animate-fade-in leading-tight">
-              Креативный
-              <br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
-                Блог
+                ПЕРЕЗАЛИВЫ
               </span>
             </h1>
             <p className="text-2xl text-white/90 mb-8 animate-fade-in font-medium max-w-2xl mx-auto">
@@ -275,7 +273,7 @@ export default function Index() {
             </Button>
           </div>
           <p className="text-muted-foreground">
-            © 2024 Креативный Блог. Созданo с вдохновением ✨
+            © 2024 ПЕРЕЗАЛИВЫ. Созданo с вдохновением ✨
           </p>
         </div>
       </footer>
