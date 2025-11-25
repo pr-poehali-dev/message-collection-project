@@ -86,7 +86,7 @@ export default function Index() {
               </div>
             </div>
             <h1 className="text-7xl font-black mb-6 text-white animate-fade-in leading-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 font-medium">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 font-medium text-base">
                 ПЕРЕЗАЛИВЫ
               </span>
             </h1>
