@@ -189,9 +189,47 @@ export default function Index() {
             <h2 className="text-5xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
               Наши видео
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               Смотрите наши последние видео с канала VK Видео
             </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-8">
+              <Card className="border-2 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 mb-4">
+                    <Icon name="Users" size={28} className="text-white" />
+                  </div>
+                  <div className="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400 mb-2">
+                    12.5K
+                  </div>
+                  <p className="text-sm font-semibold text-muted-foreground">Подписчиков</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 mb-4">
+                    <Icon name="Eye" size={28} className="text-white" />
+                  </div>
+                  <div className="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-purple-400 mb-2">
+                    2.8M
+                  </div>
+                  <p className="text-sm font-semibold text-muted-foreground">Просмотров</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                <CardContent className="p-6 text-center">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 mb-4">
+                    <Icon name="Heart" size={28} className="text-white" />
+                  </div>
+                  <div className="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-pink-400 mb-2">
+                    45.2K
+                  </div>
+                  <p className="text-sm font-semibold text-muted-foreground">Лайков</p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
 
           {isLoggedIn ? (
