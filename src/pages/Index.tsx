@@ -200,7 +200,7 @@ export default function Index() {
                     <Icon name="Users" size={28} className="text-white" />
                   </div>
                   <div className="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400 mb-2">
-                    12.5K
+                    157
                   </div>
                   <p className="text-sm font-semibold text-muted-foreground">Подписчиков</p>
                 </CardContent>
@@ -212,7 +212,7 @@ export default function Index() {
                     <Icon name="Eye" size={28} className="text-white" />
                   </div>
                   <div className="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-purple-400 mb-2">
-                    2.8M
+                    8.5K
                   </div>
                   <p className="text-sm font-semibold text-muted-foreground">Просмотров</p>
                 </CardContent>
@@ -224,7 +224,7 @@ export default function Index() {
                     <Icon name="Heart" size={28} className="text-white" />
                   </div>
                   <div className="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-pink-400 mb-2">
-                    45.2K
+                    342
                   </div>
                   <p className="text-sm font-semibold text-muted-foreground">Лайков</p>
                 </CardContent>
