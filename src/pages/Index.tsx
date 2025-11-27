@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
+import AuthDialog from '@/components/AuthDialog';
 
 const blogPosts = [
   {
@@ -41,6 +42,39 @@ export default function Index() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const checkAuth = (action: () => void) => {
+    if (isLoggedIn) {
+      action();
+    } else {
+      setPendingAction(() => action);
+      setIsAuthOpen(true);
+    }
+  };
+
+  const handleAuthSuccess = () => {
+    setIsLoggedIn(true);
+    if (pendingAction) {
+      pendingAction();
+      setPendingAction(null);
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setIsLoggedIn(false);
+    toast.success('Вы вышли из аккаунта');
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,6 +110,33 @@ export default function Index() {
 
   return (
     <div className="min-h-screen">
+      <AuthDialog 
+        open={isAuthOpen} 
+        onOpenChange={setIsAuthOpen} 
+        onSuccess={handleAuthSuccess}
+      />
+      
+      <div className="fixed top-4 right-4 z-50">
+        {isLoggedIn ? (
+          <Button
+            onClick={handleLogout}
+            variant="outline"
+            className="bg-white/90 backdrop-blur-sm shadow-lg"
+          >
+            <Icon name="LogOut" size={18} className="mr-2" />
+            Выйти
+          </Button>
+        ) : (
+          <Button
+            onClick={() => setIsAuthOpen(true)}
+            variant="outline"
+            className="bg-white/90 backdrop-blur-sm shadow-lg"
+          >
+            <Icon name="LogIn" size={18} className="mr-2" />
+            Войти
+          </Button>
+        )}
+      </div>
       <header className="relative overflow-hidden bg-gradient-to-br from-primary via-secondary to-accent animate-gradient-shift bg-[length:200%_200%]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
         <div className="container mx-auto px-4 py-32 relative z-10">
@@ -97,19 +158,17 @@ export default function Index() {
               <Button
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90 font-semibold text-lg px-8 rounded-2xl shadow-2xl transition-all hover:scale-105"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => checkAuth(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }))}
               >
                 Связаться с нами
               </Button>
               <Button
                 size="lg"
                 className="bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 font-semibold text-lg px-8 rounded-2xl shadow-2xl transition-all hover:scale-105 border-2 border-white/30"
-                asChild
+                onClick={() => checkAuth(() => window.open('https://vk.com/perezelivsyoutube', '_blank'))}
               >
-                <a href="https://vk.com/perezelivsyoutube" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  <Icon name="Play" size={20} />
-                  Смотреть видео
-                </a>
+                <Icon name="Play" size={20} />
+                Смотреть видео
               </Button>
             </div>
           </div>
@@ -218,16 +277,24 @@ export default function Index() {
               size="icon" 
               variant="ghost" 
               className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all hover:scale-110"
-              asChild
+              onClick={() => checkAuth(() => window.open('https://t.me/+XvtmRDGb_OFmOThi', '_blank'))}
             >
-              <a href="https://t.me/+XvtmRDGb_OFmOThi" target="_blank" rel="noopener noreferrer">
-                <Icon name="Send" size={24} />
-              </a>
+              <Icon name="Send" size={24} />
             </Button>
-            <Button size="icon" variant="ghost" className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all hover:scale-110">
+            <Button 
+              size="icon" 
+              variant="ghost" 
+              className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all hover:scale-110"
+              onClick={() => checkAuth(() => toast.info('Подключите Instagram в настройках'))}
+            >
               <Icon name="Instagram" size={24} />
             </Button>
-            <Button size="icon" variant="ghost" className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all hover:scale-110">
+            <Button 
+              size="icon" 
+              variant="ghost" 
+              className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all hover:scale-110"
+              onClick={() => checkAuth(() => toast.info('Подключите YouTube в настройках'))}
+            >
               <Icon name="Youtube" size={24} />
             </Button>
           </div>
