@@ -176,6 +176,73 @@ export default function Index() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </header>
 
+      <section className="py-24 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary mb-6 transform -rotate-6">
+              <Icon name="Video" size={32} className="text-white" />
+            </div>
+            <h2 className="text-5xl font-black mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+              Наши видео
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Смотрите наши последние видео с канала VK Видео
+            </p>
+          </div>
+
+          {isLoggedIn ? (
+            <div className="max-w-7xl mx-auto">
+              <div className="bg-card rounded-3xl border-2 shadow-2xl overflow-hidden">
+                <iframe
+                  src="https://vk.com/video_ext.php?oid=-227491169&section=page"
+                  width="100%"
+                  height="600"
+                  allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
+                  frameBorder="0"
+                  allowFullScreen
+                  className="w-full"
+                ></iframe>
+              </div>
+              <div className="text-center mt-8">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-2xl font-semibold"
+                  asChild
+                >
+                  <a href="https://vk.com/perezelivsyoutube" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <Icon name="ExternalLink" size={20} />
+                    Смотреть все видео на VK
+                  </a>
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="max-w-2xl mx-auto">
+              <Card className="border-2 rounded-3xl shadow-2xl">
+                <CardContent className="p-12 text-center">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
+                    <Icon name="Lock" size={40} className="text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">Войдите, чтобы смотреть видео</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Зарегистрируйтесь или войдите в аккаунт, чтобы получить доступ ко всем нашим видео
+                  </p>
+                  <Button
+                    size="lg"
+                    onClick={() => setIsAuthOpen(true)}
+                    className="rounded-2xl font-semibold px-8"
+                  >
+                    <Icon name="LogIn" size={20} className="mr-2" />
+                    Войти
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          )}
+        </div>
+      </section>
+
 
 
       <section id="contact" className="py-24 px-4 bg-card/50">
