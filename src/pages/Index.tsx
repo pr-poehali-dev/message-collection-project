@@ -45,6 +45,10 @@ export default function Index() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Все');
+
+  const categories = ['Все', 'Геймплеи', 'Обзоры', 'Летсплеи', 'Гайды', 'Реакции'];
 
   useEffect(() => {
     const user = localStorage.getItem('user');
@@ -192,6 +196,31 @@ export default function Index() {
 
           {isLoggedIn ? (
             <div className="max-w-7xl mx-auto">
+              <div className="mb-8 space-y-6">
+                <div className="relative max-w-2xl mx-auto">
+                  <Icon name="Search" size={20} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    placeholder="Поиск видео..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-12 h-14 rounded-2xl border-2 text-lg"
+                  />
+                </div>
+
+                <div className="flex flex-wrap gap-3 justify-center">
+                  {categories.map((category) => (
+                    <Button
+                      key={category}
+                      variant={selectedCategory === category ? 'default' : 'outline'}
+                      onClick={() => setSelectedCategory(category)}
+                      className="rounded-full font-semibold transition-all hover:scale-105"
+                    >
+                      {category}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
               <div className="bg-card rounded-3xl border-2 shadow-2xl overflow-hidden">
                 <iframe
                   src="https://vk.com/video_ext.php?oid=-227491169&section=page"
@@ -203,6 +232,16 @@ export default function Index() {
                   className="w-full"
                 ></iframe>
               </div>
+
+              {searchQuery && (
+                <div className="mt-6 p-4 bg-primary/10 rounded-2xl text-center">
+                  <p className="text-sm text-muted-foreground">
+                    Поиск: <span className="font-semibold text-foreground">{searchQuery}</span>
+                    {selectedCategory !== 'Все' && <> в категории <span className="font-semibold text-foreground">{selectedCategory}</span></>}
+                  </p>
+                </div>
+              )}
+
               <div className="text-center mt-8">
                 <Button
                   size="lg"
@@ -219,15 +258,23 @@ export default function Index() {
             </div>
           ) : (
             <div className="max-w-2xl mx-auto">
-              <Card className="border-2 rounded-3xl shadow-2xl">
+              <Card className="border-2 rounded-3xl shadow-2xl bg-gradient-to-br from-card to-card/50">
                 <CardContent className="p-12 text-center">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
-                    <Icon name="Lock" size={40} className="text-primary" />
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary to-secondary mb-6 animate-pulse">
+                    <Icon name="Lock" size={40} className="text-white" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4">Войдите, чтобы смотреть видео</h3>
                   <p className="text-muted-foreground mb-6">
                     Зарегистрируйтесь или войдите в аккаунт, чтобы получить доступ ко всем нашим видео
                   </p>
+                  <div className="grid grid-cols-2 gap-3 mb-6 max-w-sm mx-auto">
+                    {['Геймплеи', 'Обзоры', 'Летсплеи', 'Гайды'].map((cat) => (
+                      <div key={cat} className="p-3 bg-muted/50 rounded-xl text-sm font-medium text-muted-foreground">
+                        <Icon name="Play" size={16} className="inline mr-2" />
+                        {cat}
+                      </div>
+                    ))}
+                  </div>
                   <Button
                     size="lg"
                     onClick={() => setIsAuthOpen(true)}
