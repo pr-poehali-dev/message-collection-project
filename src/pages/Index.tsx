@@ -93,13 +93,23 @@ export default function Index() {
             <p className="text-2xl text-white/90 mb-8 animate-fade-in font-medium max-w-2xl mx-auto">
               Площадка для твоих идей и проектов
             </p>
-            <div className="flex gap-4 justify-center animate-slide-up">
+            <div className="flex gap-4 justify-center animate-slide-up flex-wrap">
               <Button
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90 font-semibold text-lg px-8 rounded-2xl shadow-2xl transition-all hover:scale-105"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Связаться с нами
+              </Button>
+              <Button
+                size="lg"
+                className="bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 font-semibold text-lg px-8 rounded-2xl shadow-2xl transition-all hover:scale-105 border-2 border-white/30"
+                asChild
+              >
+                <a href="https://vk.com/perezelivsyoutube" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <Icon name="Play" size={20} />
+                  Смотреть видео
+                </a>
               </Button>
             </div>
           </div>
