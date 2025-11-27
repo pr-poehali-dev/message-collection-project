@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
 import AuthDialog from '@/components/AuthDialog';
+import PlateGame from '@/components/PlateGame';
 
 const blogPosts = [
   {
@@ -47,6 +48,7 @@ export default function Index() {
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Все');
+  const [isGameOpen, setIsGameOpen] = useState(false);
 
   const categories = ['Все', 'Геймплеи', 'Обзоры', 'Летсплеи', 'Гайды', 'Реакции'];
 
@@ -120,7 +122,20 @@ export default function Index() {
         onSuccess={handleAuthSuccess}
       />
       
-      <div className="fixed top-4 right-4 z-50">
+      <PlateGame 
+        open={isGameOpen}
+        onOpenChange={setIsGameOpen}
+      />
+      
+      <div className="fixed top-4 right-4 z-50 flex gap-2">
+        <Button
+          onClick={() => checkAuth(() => setIsGameOpen(true))}
+          variant="outline"
+          className="bg-white/90 backdrop-blur-sm shadow-lg"
+        >
+          <Icon name="Gamepad2" size={18} className="mr-2" />
+          Игра
+        </Button>
         {isLoggedIn ? (
           <Button
             onClick={handleLogout}
